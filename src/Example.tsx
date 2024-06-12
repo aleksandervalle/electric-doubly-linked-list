@@ -19,7 +19,25 @@ export const Example = () => {
       await shape.synced
     }
 
+    const syncSinglyLinkedNodes = async () => {
+      // Resolves when the shape subscription has been established.
+      const shape = await db.singly_linked_nodes.sync()
+
+      // Resolves when the data has been synced into the local database.
+      await shape.synced
+    }
+
+    const syncDoublyLinkedNodes = async () => {
+      // Resolves when the shape subscription has been established.
+      const shape = await db.doubly_linked_nodes.sync()
+
+      // Resolves when the data has been synced into the local database.
+      await shape.synced
+    }
+
     syncItems()
+    syncSinglyLinkedNodes()
+    syncDoublyLinkedNodes()
   }, [])
 
   const addItem = async () => {
